@@ -4,15 +4,15 @@
 
 **Projects is based on:**
  - Spring hibernate MVC,
- - Spring Data
- - Thymeleaf
+ - Spring Data,
+ - Thymeleaf,
+ - Spring security,
+ - Spring validation
 
 **Features:**
 
+ - Login and register forms
+ - Custom register form with validation fields
+ - Different pages with access based on admin and user roles.
  - 
- - 
- - 
- - 
- - 
- - 
- - 
+

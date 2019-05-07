@@ -13,14 +13,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "{com.example.hotel.model.user.NotEmpty}")
+    @NotEmpty(message = "{com.example.springmvcrest.model.User.NotEmpty}")
     private String nickname;
-    @NotEmpty(message = "{com.example.hotel.model.user.NotEmpty}")
-    @Email(message = "{com.example.hotel.model.user.Email}")
+    @NotEmpty(message = "{com.example.springmvcrest.model.User.NotEmpty}")
+    @Email(message = "{com.example.springmvcrest.model.User.Email}")
     @Column(unique = true)
     private String email;
-    @NotEmpty(message = "{com.example.hotel.model.user.NotEmpty}")
-    @Size(min = 4, message = "{com.example.hotel.model.user.Size}")
+    @NotEmpty(message = "{com.example.springmvcrest.model.User.NotEmpty}")
+    @Size(min = 4, message = "{com.example.springmvcrest.model.User.Size}")
     private String password;
     private boolean activated;
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
