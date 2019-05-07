@@ -1,5 +1,7 @@
 package com.example.springmvcrest.user;
 
+import com.example.springmvcrest.userRole.UserRole;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;

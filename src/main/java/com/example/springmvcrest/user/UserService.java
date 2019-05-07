@@ -1,5 +1,7 @@
 package com.example.springmvcrest.user;
 
+import com.example.springmvcrest.userRole.UserRole;
+import com.example.springmvcrest.userRole.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

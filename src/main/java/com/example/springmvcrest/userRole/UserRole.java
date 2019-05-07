@@ -1,4 +1,4 @@
-package com.example.springmvcrest.user;
+package com.example.springmvcrest.userRole;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

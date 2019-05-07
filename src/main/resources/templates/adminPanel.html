@@ -9,7 +9,7 @@
         </head>
         <body>
             <div class="jumbotron text-center">
-            <h1>You are logged in as admin</h1>
+                <h1>You are logged in as admin</h1>
                 <table border="1" align="center">
                     <tr>
                         <th>Id</th>
@@ -24,11 +24,22 @@
                         <th th:text="${u.email}">Email</th>
                         <th th:text="${u.activated}">Activated</th>
                         <th>
-                            <form action="#" th:action="@{/panel/ban}" th:method="put" th:object="${u}" th:name="userDto">
+                            <form action="#" th:action="@{/panel/ban}" th:method="put" th:object="${u}"
+                                  th:name="userDto">
                                 <input type="hidden" th:value="*{id}" th:name="idUserToUpdate">
                                 <input type="submit" value="Change status">
                             </form>
                         </th>
+                    </tr>
+                </table>
+            </div>
+            <div class="jumbotron text-center">
+                <table border="1" align="center">
+                    <tr>
+                        <th>Category name</th>
+                    </tr>
+                    <tr th:each="c:${roomCategories}">
+                        <th th:text="${c}">Name</th>
                     </tr>
                 </table>
             </div>
