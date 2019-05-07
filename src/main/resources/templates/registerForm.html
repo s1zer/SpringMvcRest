@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <html xmlns:th="http://www.thymeleaf.org">
+        <head>
+            <meta charset="UTF-8">
+            <title>Create new account</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+        </head>
+        <body>
+            <div class="jumbotron">
+                <div class="jumbotron text-center">
+                    <h1>Register form</h1>
+                    <form th:action="@{/register}" th:object="${user}" method="post">
+                        <p th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">First name errors</p>
+                        <input th:field="*{nickname}" placeholder="Nickname"><br>
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email errors</p>
+                        <p th:if="${message}" th:text="${message.getContent()}">Duplicate email error</p>
+                        <input th:field="*{email}" placeholder="Email"><br>
+                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password errors</p>
+                        <input th:field="*{password}" type="password" placeholder="Password min. 4 char"><br>
+                        <input type="submit" value="Register">
+                    </form>
+                </div>
+            </div>
+        </body>
+    </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <html xmlns:th="http://www.thymeleaf.org">
+        <head>
+            <meta charset="UTF-8">
+            <title>Admin panel</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+        </head>
+        <body>
+            <div class="jumbotron text-center">
+            <h1>You are logged in as admin</h1>
+                <table border="1" align="center">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nickname</th>
+                        <th>Email</th>
+                        <th>Is Activated?</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr th:each="u:${users}">
+                        <th th:text="${u.id}">ID</th>
+                        <th th:text="${u.nickname}">Nickname</th>
+                        <th th:text="${u.email}">Email</th>
+                        <th th:text="${u.activated}">Activated</th>
+                        <th>
+                            <form action="#" th:action="@{/panel/ban}" th:method="put" th:object="${u}" th:name="userDto">
+                                <input type="hidden" th:value="*{id}" th:name="idUserToUpdate">
+                                <input type="submit" value="Ban">
+                            </form>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </body>
+    </html>

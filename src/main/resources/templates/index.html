@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <html xmlns:th="http://www.thymeleaf.org">
+        <head>
+            <meta charset="UTF-8">
+            <title>Home page</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+        </head>
+        <body>
+            <div class="jumbotron">
+                <div class="jumbotron text-center">
+                    <a href="#" th:href="@{/secured}">Go secured page</a><br>
+                    <a href="#" th:href="@{/register}">Create account</a><br>
+                    <a href="#" th:href="@{/panel/admin}">Go admin panel</a>
+                    <a href="#" th:href="@{/panel/user}">Go user panel</a>
+                </div>
+            </div>
+        </body>
+    </html>
