@@ -1,4 +1,4 @@
-package com.example.springmvcrest.User;
+package com.example.springmvcrest.user;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -13,14 +13,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "{com.example.hotel.model.User.NotEmpty}")
+    @NotEmpty(message = "{com.example.hotel.model.user.NotEmpty}")
     private String nickname;
-    @NotEmpty(message = "{com.example.hotel.model.User.NotEmpty}")
-    @Email(message = "{com.example.hotel.model.User.Email}")
+    @NotEmpty(message = "{com.example.hotel.model.user.NotEmpty}")
+    @Email(message = "{com.example.hotel.model.user.Email}")
     @Column(unique = true)
     private String email;
-    @NotEmpty(message = "{com.example.hotel.model.User.NotEmpty}")
-    @Size(min = 4, message = "{com.example.hotel.model.User.Size}")
+    @NotEmpty(message = "{com.example.hotel.model.user.NotEmpty}")
+    @Size(min = 4, message = "{com.example.hotel.model.user.Size}")
     private String password;
     private boolean activated;
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)

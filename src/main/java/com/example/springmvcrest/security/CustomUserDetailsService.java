@@ -1,9 +1,9 @@
 package com.example.springmvcrest.security;
 
 
-import com.example.springmvcrest.User.User;
-import com.example.springmvcrest.User.UserRepository;
-import com.example.springmvcrest.User.UserRole;
+import com.example.springmvcrest.user.User;
+import com.example.springmvcrest.user.UserRepository;
+import com.example.springmvcrest.user.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -37,7 +37,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                             convertAuthorities(user.getRoles()));
             return userDetails;
         } else {
-            throw new UsernameNotFoundException("User not found");
+            throw new UsernameNotFoundException("user not found");
 
         }
     }

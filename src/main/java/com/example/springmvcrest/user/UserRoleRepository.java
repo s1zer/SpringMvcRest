@@ -1,4 +1,4 @@
-package com.example.springmvcrest.User;
+package com.example.springmvcrest.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

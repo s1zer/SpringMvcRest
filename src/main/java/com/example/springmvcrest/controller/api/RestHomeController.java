@@ -1,8 +1,8 @@
 package com.example.springmvcrest.controller.api;
 
 
-import com.example.springmvcrest.User.UserDto;
-import com.example.springmvcrest.User.UserService;
+import com.example.springmvcrest.user.UserDto;
+import com.example.springmvcrest.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

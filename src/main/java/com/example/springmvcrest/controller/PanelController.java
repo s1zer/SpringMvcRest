@@ -1,8 +1,8 @@
 package com.example.springmvcrest.controller;
 
 
-import com.example.springmvcrest.User.UserDto;
-import com.example.springmvcrest.User.UserService;
+import com.example.springmvcrest.user.UserDto;
+import com.example.springmvcrest.user.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

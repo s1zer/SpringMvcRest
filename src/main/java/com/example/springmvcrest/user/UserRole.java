@@ -1,4 +1,4 @@
-package com.example.springmvcrest.User;
+package com.example.springmvcrest.user;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
