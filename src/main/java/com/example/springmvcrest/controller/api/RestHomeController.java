@@ -17,7 +17,6 @@ public class RestHomeController {
 
     UserService userService;
 
-    @Autowired
     public RestHomeController(UserService userService) {
         this.userService = userService;
     }

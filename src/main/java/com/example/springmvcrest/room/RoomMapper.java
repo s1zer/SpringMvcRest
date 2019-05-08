@@ -15,11 +15,13 @@ public class RoomMapper {
         this.categoryRepository = categoryRepository;
     }
 
-    RoomDto toDto(Room room) {
+    static RoomDto toDto(Room room) {
         RoomDto roomDto = new RoomDto();
         roomDto.setId(room.getId());
+        roomDto.setCity(room.getCity());
         roomDto.setNumber(room.getNumber());
         roomDto.setPrice(room.getPrice());
+        roomDto.setAvailable(room.isAvailable());
         roomDto.setDescription(room.getDescription());
         if (room.getCategory() != null) {
             roomDto.setRoomCategory(room.getCategory().getName());
@@ -31,8 +33,10 @@ public class RoomMapper {
     Room toEntity(RoomDto roomDto) {
         Room roomEntity = new Room();
         roomEntity.setId(roomDto.getId());
+        roomEntity.setCity(roomDto.getCity());
         roomEntity.setNumber(roomDto.getNumber());
         roomEntity.setPrice(roomDto.getPrice());
+        roomEntity.setAvailable(roomDto.isAvailable());
         roomEntity.setDescription(roomDto.getDescription());
         Optional<Category> roomCategory = categoryRepository.findByName(roomDto.getRoomCategory());
         roomCategory.ifPresent(roomEntity::setCategory);

@@ -3,10 +3,20 @@ package com.example.springmvcrest.room;
 public class RoomDto {
 
     private Long id;
+    private String city;
     private int number;
     private double price;
     private String description;
     private String roomCategory;
+    private boolean available;
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
 
     public Long getId() {
         return id;
@@ -14,6 +24,14 @@ public class RoomDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public int getNumber() {

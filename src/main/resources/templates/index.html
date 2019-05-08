@@ -30,10 +30,34 @@
                 </div>
             </nav>
 
-            <div class="container text-center">
-                <h3>Find your ideal accommodation wherever you want</h3>
-                <input class="form-control" type="text" placeholder="Where are you going?"
-                       aria-label="Search">
+            <div class="container">
+
+                <form class="form-inline mr-auto text-center">
+                    <input class="form-control" type="text" placeholder="Where are you going?"
+                           aria-label="Search" th:name="city">
+                    <button class="btn btn-dark btn-rounded btn-sm my-0" type="submit">Search</button>
+                </form>
+                <div class="jumbotron text-center">
+                    <table class="table" align="center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="text-center">City</th>
+                                <th class="text-center">Number</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Category</th>
+                                <th class="text-center">Is available?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="r:${rooms}">
+                                <td th:text="${r.city}">City</td>
+                                <td th:text="${r.number}">Number</td>
+                                <td th:text="${r.price}">Price</td>
+                                <td th:text="${r.roomCategory}">Category</td>
+                                <td th:text="${r.available}">True</td>
+                            </tr>
+                    </table>
+                </div>
             </div>
         </body>
     </html>

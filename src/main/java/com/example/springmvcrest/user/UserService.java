@@ -2,7 +2,6 @@ package com.example.springmvcrest.user;
 
 import com.example.springmvcrest.userRole.UserRole;
 import com.example.springmvcrest.userRole.UserRoleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,6 @@ public class UserService {
     private UserRoleRepository userRoleRepository;
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
     public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
