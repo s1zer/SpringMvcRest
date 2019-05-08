@@ -40,7 +40,7 @@ public class PanelController {
         return "userPanel";
     }
 
-    @PutMapping("/ban")
+    @PutMapping("/updateUserStatus")
     public String setUserStatus(@RequestParam Long idUserToUpdate) {
         userService.setUserStatus(idUserToUpdate);
         return "redirect:/panel/admin";
