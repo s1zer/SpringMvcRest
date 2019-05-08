@@ -14,6 +14,7 @@ public class Room {
     private int number;
     private double price;
     private String description;
+    private boolean available;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -56,5 +57,13 @@ public class Room {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }

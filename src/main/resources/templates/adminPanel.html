@@ -6,85 +6,39 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         </head>
         <body>
 
-            <div class="jumbotron">
-                <br>
-                <nav class="navbar navbar-inverse">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#" th:href="@{/}">BookingHotel</a>
-                        </div>
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#" th:href="@{/}">Home</a></li>
-                            <li><a href="#" th:href="@{/secured}">Secured page</a></li>
-                            <li><a href="#" th:href="@{/register}">Create account</a></li>
-                            <li><a href="#" th:href="@{/panel/admin}">Admin panel</a></li>
-                            <li><a href="#" th:href="@{/panel/user}">User panel</a></li>
-                        </ul>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#" th:href="@{/}">BookingHotel</a>
                     </div>
-                </nav>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#" th:href="@{/}">Home</a></li>
+                        <li><a href="#" th:href="@{/secured}">Secured page</a></li>
+                        <li><a href="#" th:href="@{/register}">Create account</a></li>
+                        <li><a href="#" th:href="@{/panel/admin}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Admin
+                            panel</a></li>
+                        <li><a href="#" th:href="@{/panel/user}">My account</a></li>
+                        <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_USER')}">Logout</a>
+                        </li>
+                        <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-                <div class="container text-left">
-                    <div class="text-left">
-                        <button type="button" class="btn btn-info text-left" data-toggle="collapse"
-                                data-target="#demo1">
-                            Show room's status
-                        </button>
-                        <div id="demo1" class="collapse t">
-                            <br>
-                            <table border="1" align="left">
-                                <tr>
-                                    <th>Name</th>
-                                </tr>
-                                <tr th:each="c:${roomCategories}">
-                                    <th th:text="${c}">Category's name</th>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+            <div class="container">
+                <form action="#" th:action="@{/panel/admin/categories}">
+                    <input type="submit" value="Rooms' categories" class="btn btn-secondary btn-lg btn-block">
+                </form>
                 <br>
-                <div class="container text-left">
-                    <div class="text-left">
-                        <button type="button" class="btn btn-info text-left" data-toggle="collapse" data-target="#demo">
-                            Show all users
-                        </button>
-                        <div id="demo" class="collapse t">
-                            <br>
-                            <table border="1" align="left">
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nickname</th>
-                                    <th>Email</th>
-                                    <th>Is Activated?</th>
-                                    <th>Action</th>
-                                </tr>
-                                <tr th:each="u:${users}">
-                                    <th th:text="${u.id}">ID</th>
-                                    <th th:text="${u.nickname}">Nickname</th>
-                                    <th th:text="${u.email}">Email</th>
-                                    <th th:text="${u.activated}">Activated</th>
-                                    <th>
-                                        <form action="#" th:action="@{/panel/updateUserStatus}" th:method="put"
-                                              th:object="${u}"
-                                              th:name="userDto">
-                                            <input type="hidden" th:value="*{id}" th:name="idUserToUpdate">
-                                            <input type="submit" value="Change status">
-                                        </form>
-                                    </th>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                <button type="button" class="btn btn-secondary btn-lg btn-block">Rooms</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block">Users</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block">Other</button>
+
             </div>
-
-            <input type="checkbox" checked data-toggle="toggle" data-on="Hello<br>World" data-off="Goodbye<br>World">
-
 
         </body>
     </html>

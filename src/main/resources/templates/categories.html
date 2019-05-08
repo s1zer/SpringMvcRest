@@ -2,12 +2,11 @@
 <html lang="en">
     <html xmlns:th="http://www.thymeleaf.org">
         <head>
-            <meta charset="UTF-8">
-            <title>Create new account</title>
+            <title>Categories</title>
+            <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
         </head>
         <body>
 
@@ -31,20 +30,18 @@
                 </div>
             </nav>
 
-            <div class="jumbotron">
-                <div class="jumbotron text-center">
-                    <h1>Register form</h1>
-                    <form th:action="@{/register}" th:object="${user}" method="post">
-                        <p th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">First name errors</p>
-                        <input th:field="*{nickname}" placeholder="Nickname"><br>
-                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email errors</p>
-                        <p th:if="${message}" th:text="${message.getContent()}">Duplicate email error</p>
-                        <input th:field="*{email}" placeholder="Email"><br>
-                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password errors</p>
-                        <input th:field="*{password}" type="password" placeholder="Password min. 4 char"><br>
-                        <input type="submit" value="Register">
-                    </form>
-                </div>
+            <div class="jumbotron text-center">
+                <table class="table" align="center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="c:${roomCategories}">
+                            <td th:text="${c}">Category's name</td>
+                        </tr>
+                </table>
             </div>
         </body>
     </html>

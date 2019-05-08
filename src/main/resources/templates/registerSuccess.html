@@ -20,9 +20,13 @@
                         <li class="active"><a href="#" th:href="@{/}">Home</a></li>
                         <li><a href="#" th:href="@{/secured}">Secured page</a></li>
                         <li><a href="#" th:href="@{/register}">Create account</a></li>
-                        <li><a href="#" th:href="@{/panel/admin}">Admin panel</a></li>
-                        <li><a href="#" th:href="@{/panel/user}">User panel</a></li>
-                        <li><a href="#" th:href="@{/logout}" th:if="${authenticated}">Logout</a></li>
+                        <li><a href="#" th:href="@{/panel/admin}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Admin
+                            panel</a></li>
+                        <li><a href="#" th:href="@{/panel/user}">My account</a></li>
+                        <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_USER')}">Logout</a>
+                        </li>
+                        <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Logout</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

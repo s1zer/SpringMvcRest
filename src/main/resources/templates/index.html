@@ -6,8 +6,6 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
         </head>
         <body>
@@ -21,15 +19,21 @@
                         <li class="active"><a href="#" th:href="@{/}">Home</a></li>
                         <li><a href="#" th:href="@{/secured}">Secured page</a></li>
                         <li><a href="#" th:href="@{/register}">Create account</a></li>
-                        <li><a href="#" th:href="@{/panel/admin}">Admin panel</a></li>
-                        <li><a href="#" th:href="@{/panel/user}">User panel</a></li>
+                        <li><a href="#" th:href="@{/panel/admin}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Admin
+                            panel</a></li>
+                        <li><a href="#" th:href="@{/panel/user}">My account</a></li>
                         <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_USER')}">Logout</a>
+                        </li>
+                        <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Logout</a>
                         </li>
                     </ul>
                 </div>
             </nav>
 
-            <div class="container">
+            <div class="container text-center">
                 <h3>Find your ideal accommodation wherever you want</h3>
+                <input class="form-control" type="text" placeholder="Where are you going?"
+                       aria-label="Search">
+            </div>
         </body>
     </html>

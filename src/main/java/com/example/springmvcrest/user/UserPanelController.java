@@ -1,4 +1,4 @@
-package com.example.springmvcrest.controller;
+package com.example.springmvcrest.user;
 
 
 import com.example.springmvcrest.roomCategory.CategoryService;
@@ -16,12 +16,12 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/panel")
-public class PanelController {
+public class UserPanelController {
 
     UserService userService;
     CategoryService categoryService;
 
-    public PanelController(UserService userService, CategoryService categoryService) {
+    public UserPanelController(UserService userService, CategoryService categoryService) {
         this.userService = userService;
         this.categoryService = categoryService;
     }
@@ -29,9 +29,9 @@ public class PanelController {
     @GetMapping("/admin")
     public String adminPanel(Model model) {
         List<UserDto> allUsers = userService.getAlUsers();
-        Set<String> roomCategories = categoryService.getRoomCategories();
+//        Set<String> roomCategories = categoryService.getRoomCategories();
         model.addAttribute("users", allUsers);
-        model.addAttribute("roomCategories", roomCategories);
+//        model.addAttribute("roomCategories", roomCategories);
         return "adminPanel";
     }
 
