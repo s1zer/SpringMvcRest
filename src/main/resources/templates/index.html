@@ -46,6 +46,7 @@
                                 <th class="text-center">Price</th>
                                 <th class="text-center">Category</th>
                                 <th class="text-center">Is available?</th>
+                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,6 +56,13 @@
                                 <td th:text="${r.price}">Price</td>
                                 <td th:text="${r.roomCategory}">Category</td>
                                 <td th:text="${r.available}">True</td>
+                                <td th:if="${r.available}">
+                                    <button type="button" class="btn btn-primary btn-sm btn-block">Book</button>
+                                </td>
+                                <td th:if="${!r.available}">
+                                    <button type="button" class="btn btn-primary btn-danger btn-sm btn-block">Reserved
+                                    </button>
+                                </td>
                             </tr>
                     </table>
                 </div>
