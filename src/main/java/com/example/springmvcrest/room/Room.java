@@ -1,8 +1,13 @@
 package com.example.springmvcrest.room;
 
+import com.example.springmvcrest.reservation.Reservation;
 import com.example.springmvcrest.roomCategory.Category;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Room {
@@ -10,15 +15,20 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "{com.example.springmvcrest.model.Room.NotEmpty}")
     private String city;
     @Column(unique = true)
+    @NotNull
     private int number;
+    @NotNull
     private double price;
     private String description;
     private boolean available;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+    @OneToMany(mappedBy = "room")
+    private List<Reservation> reservations = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -74,5 +84,13 @@ public class Room {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

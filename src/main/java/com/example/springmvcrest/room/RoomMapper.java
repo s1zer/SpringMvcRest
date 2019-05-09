@@ -11,6 +11,7 @@ public class RoomMapper {
 
     private CategoryRepository categoryRepository;
 
+
     public RoomMapper(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
@@ -38,7 +39,9 @@ public class RoomMapper {
         roomEntity.setPrice(roomDto.getPrice());
         roomEntity.setAvailable(roomDto.isAvailable());
         roomEntity.setDescription(roomDto.getDescription());
-        Optional<Category> roomCategory = categoryRepository.findByName(roomDto.getRoomCategory());
+        System.out.println("From mapper: ");
+        System.out.println(roomDto.getRoomCategory());
+        Optional<Category> roomCategory = categoryRepository.findByNameIgnoreCase(roomDto.getRoomCategory());
         roomCategory.ifPresent(roomEntity::setCategory);
 
         return roomEntity;

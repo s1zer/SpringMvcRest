@@ -18,7 +18,7 @@
                         <li><a href="#" th:href="@{/register}">Create account</a></li>
                         <li><a href="#" th:href="@{/panel/admin}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Admin
                             panel</a></li>
-                        <li><a href="#" th:href="@{/panel/user}">My account</a></li>
+                        <li><a href="#" th:href="@{/user}">My account</a></li>
                         <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_USER')}">Logout</a>
                         </li>
                         <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Logout</a>
@@ -26,22 +26,54 @@
                     </ul>
                 </div>
             </nav>
-
-            <div class="jumbotron text-center">
-                <table class="table" align="center">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th class="text-center">Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="c:${roomCategories}">
-                            <td th:text="${c}">Category's name</td>
-                            <td th:text="${c}">Category's name</td>
-                            <td th:text="${c}">Category's name</td>
-                            <td th:text="${c}">Category's name</td>
-                        </tr>
-                </table>
+            <form class="form-inline mr-auto text-center">
+                <input class="form-control" type="text" placeholder="Where are you going?"
+                       aria-label="Search" th:name="city">
+                <button class="btn btn-dark btn-rounded btn-sm my-0" type="submit">Search</button>
+            </form>
+            <div class="container">
+                <div class="jumbotron text-center">
+                    <table class="table" align="center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="text-center">City</th>
+                                <th class="text-center">Number</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Category</th>
+                                <th class="text-center">Is available?</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="r:${rooms}">
+                                <td th:text="${r.city}">City</td>
+                                <td th:text="${r.number}">Number</td>
+                                <td th:text="${r.price}">Price</td>
+                                <td th:text="${r.roomCategory}">Category</td>
+                                <td th:text="${r.available}">True</td>
+                                <td>
+                                    <form action="#" th:action="@{/room/delete}" method="post" th:object="${r}">
+                                        <input type="hidden" th:value="*{id}" th:name="idRoomToDelete">
+                                        <input type="submit" class="btn btn-primary btn-sm btn-danger" value="Delete">
+                                    </form>
+                                </td>
+                            </tr>
+                    </table>
+                    <br>
+                    <form th:object="${room}" th:action="@{/room/add}" method="post">
+                        <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}">First name errors</p>
+                        <input type="text" placeholder="City" th:field="*{city}">
+                        <input type="number" placeholder="Number" th:field="*{number}">
+                        <select class="form-check-label" th:field="*{roomCategory}">
+                            <option value="Apartment" th:value="'Apartment'">Apartment</option>
+                            <option value="Comfort" th:value="'Comfort'">Comfort</option>
+                            <option value="Standard" th:value="'Standard'">Standard</option>
+                        </select>
+                        <input type="number" placeholder="Price" th:field="*{price}">
+                        <input type="checkbox" th:field="*{available}" placeholder="Available">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Add new room">
+                    </form>
+                </div>
             </div>
 
         </body>

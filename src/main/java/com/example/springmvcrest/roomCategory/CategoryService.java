@@ -1,6 +1,5 @@
 package com.example.springmvcrest.roomCategory;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -21,4 +20,5 @@ public class CategoryService {
                 .map(c -> c.getName())
                 .collect(Collectors.toSet());
     }
+
 }

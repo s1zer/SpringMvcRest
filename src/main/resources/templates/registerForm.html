@@ -6,8 +6,6 @@
             <title>Create new account</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         </head>
         <body>
 
@@ -22,7 +20,7 @@
                         <li><a href="#" th:href="@{/register}">Create account</a></li>
                         <li><a href="#" th:href="@{/panel/admin}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Admin
                             panel</a></li>
-                        <li><a href="#" th:href="@{/panel/user}">My account</a></li>
+                        <li><a href="#" th:href="@{/user}">My account</a></li>
                         <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_USER')}">Logout</a>
                         </li>
                         <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Logout</a>

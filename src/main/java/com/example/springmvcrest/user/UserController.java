@@ -1,6 +1,5 @@
 package com.example.springmvcrest.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String addUser(@ModelAttribute @Valid User user, BindingResult bindingResult, Model model) {
+    public String addUser(@ModelAttribute(name = "user") @Valid User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "registerForm";
         } else {
@@ -37,5 +36,10 @@ public class UserController {
                 return "registerForm";
             }
         }
+    }
+
+    @GetMapping("/user")
+    public String userPanel() {
+        return "userPanel";
     }
 }

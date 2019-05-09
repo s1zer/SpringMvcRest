@@ -1,10 +1,18 @@
 package com.example.springmvcrest.room;
 
+import javax.persistence.Column;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class RoomDto {
 
     private Long id;
+    @NotEmpty(message = "{com.example.springmvcrest.model.Room.NotEmpty}")
     private String city;
+    @NotNull
+    @Column(unique = true)
     private int number;
+    @NotNull
     private double price;
     private String description;
     private String roomCategory;
@@ -64,5 +72,18 @@ public class RoomDto {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "RoomDto{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", number=" + number +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", roomCategory='" + roomCategory + '\'' +
+                ", available=" + available +
+                '}';
     }
 }

@@ -21,7 +21,7 @@
                         <li><a href="#" th:href="@{/register}">Create account</a></li>
                         <li><a href="#" th:href="@{/panel/admin}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Admin
                             panel</a></li>
-                        <li><a href="#" th:href="@{/panel/user}">My account</a></li>
+                        <li><a href="#" th:href="@{/user}">My account</a></li>
                         <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_USER')}">Logout</a>
                         </li>
                         <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Logout</a>

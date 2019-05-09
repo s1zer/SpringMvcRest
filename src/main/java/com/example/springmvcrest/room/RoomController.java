@@ -1,14 +1,60 @@
 package com.example.springmvcrest.room;
 
+import com.example.springmvcrest.roomCategory.CategoryService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class RoomController {
 
     private RoomService roomService;
+    private CategoryService categoryService;
 
-    public RoomController(RoomService roomService) {
+    public RoomController(RoomService roomService, CategoryService categoryService) {
         this.roomService = roomService;
+        this.categoryService = categoryService;
+    }
+
+    @GetMapping("/panel/admin/rooms")
+    public String getRoom(@RequestParam(required = false) String city, Model model) {
+        if (city != null && city.length() > 0) {
+            List<RoomDto> rooms = roomService.getAllRoomsByCity(city);
+            model.addAttribute("rooms", rooms);
+        } else {
+            List<RoomDto> rooms = roomService.getAllRooms();
+            model.addAttribute("rooms", rooms);
+        }
+
+        model.addAttribute("room", new RoomDto());
+        Set<String> roomCategories = categoryService.getRoomCategories();
+        model.addAttribute("roomCategories", roomCategories);
+        return "rooms";
+    }
+
+    @PostMapping("/room/delete")
+    public String deleteRoom(@RequestParam Long idRoomToDelete) {
+        roomService.deleteRoom(idRoomToDelete);
+        return "redirect:/panel/admin/rooms";
+    }
+
+    @PostMapping("/room/add")
+    public String addNewRoom(@ModelAttribute @Valid RoomDto room, BindingResult bindingResult, Model model) {
+
+        if (!bindingResult.hasErrors()) {
+            roomService.addRoom(room);
+            return "redirect:/panel/admin/rooms";
+        } else {
+            return "rooms";
+        }
     }
 
 

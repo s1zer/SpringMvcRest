@@ -1,12 +1,15 @@
 package com.example.springmvcrest.user;
 
+import com.example.springmvcrest.reservation.Reservation;
 import com.example.springmvcrest.userRole.UserRole;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,6 +30,8 @@ public class User {
     private boolean activated;
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<UserRole> roles = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -75,5 +80,13 @@ public class User {
 
     public void setActivated(boolean activated) {
         this.activated = activated;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

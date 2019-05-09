@@ -20,7 +20,7 @@
                         <li><a href="#" th:href="@{/register}">Create account</a></li>
                         <li><a href="#" th:href="@{/panel/admin}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Admin
                             panel</a></li>
-                        <li><a href="#" th:href="@{/panel/user}">My account</a></li>
+                        <li><a href="#" th:href="@{/user}">My account</a></li>
                         <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_USER')}">Logout</a>
                         </li>
                         <li><a href="#" th:href="@{/logout}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Logout</a>
@@ -34,7 +34,10 @@
                     <input type="submit" value="Rooms' categories" class="btn btn-secondary btn-lg btn-block">
                 </form>
                 <br>
-                <button type="button" class="btn btn-secondary btn-lg btn-block">Rooms</button>
+                <form action="#" th:action="@{/panel/admin/rooms}">
+                    <input type="submit" value="Rooms" class="btn btn-secondary btn-lg btn-block">
+                </form>
+                <br>
                 <button type="button" class="btn btn-secondary btn-lg btn-block">Users</button>
                 <button type="button" class="btn btn-secondary btn-lg btn-block">Other</button>
 
