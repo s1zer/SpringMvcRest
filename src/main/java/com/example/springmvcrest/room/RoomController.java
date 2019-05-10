@@ -5,10 +5,7 @@ import com.example.springmvcrest.roomCategory.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -58,6 +55,17 @@ public class RoomController {
             return "redirect:/panel/admin/rooms";
         } else {
             return "rooms";
+        }
+    }
+
+    @GetMapping("room/{id}")
+    public String getRoomDetails(@PathVariable Long id, Model model) {
+        try {
+            RoomDto roomDto = roomService.getRoomById(id);
+            model.addAttribute("room", roomDto);
+            return "roomDetails";
+        } catch (RoomNotFoundException e) {
+            return "error";
         }
     }
 

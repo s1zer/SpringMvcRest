@@ -36,10 +36,8 @@ public class RoomService {
                 .collect(Collectors.toList());
     }
 
-    public boolean deleteRoom(Long id) {
+    boolean deleteRoom(Long id) {
         Optional<Room> room = roomRepository.findById(id);
-//        room.ifPresent(r ->
-//                roomRepository.delete(r));
         if (room.isPresent() && room.get().isAvailable()) {
             roomRepository.delete(room.get());
             return true;
@@ -48,7 +46,7 @@ public class RoomService {
         }
     }
 
-    public boolean addRoom(RoomDto roomDto) {
+    boolean addRoom(RoomDto roomDto) {
         Optional<Room> duplicateRoom = roomRepository.findByNumber(roomDto.getNumber());
         if (duplicateRoom.isPresent()) {
             return false;
@@ -58,5 +56,11 @@ public class RoomService {
             roomRepository.save(roomEntity);
             return true;
         }
+    }
+
+    RoomDto getRoomById(Long id) {
+        Room findRoom = roomRepository.getById(id);
+        RoomDto roomDto = RoomMapper.toDto(findRoom);
+        return roomDto;
     }
 }
