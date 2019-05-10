@@ -36,9 +36,16 @@ public class RoomService {
                 .collect(Collectors.toList());
     }
 
-    public void deleteRoom(Long id) {
+    public boolean deleteRoom(Long id) {
         Optional<Room> room = roomRepository.findById(id);
-        room.ifPresent(r -> roomRepository.delete(r));
+//        room.ifPresent(r ->
+//                roomRepository.delete(r));
+        if (room.isPresent() && room.get().isAvailable()) {
+            roomRepository.delete(room.get());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean addRoom(RoomDto roomDto) {

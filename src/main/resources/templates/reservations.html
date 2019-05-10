@@ -3,11 +3,12 @@
     <html xmlns:th="http://www.thymeleaf.org">
         <head>
             <meta charset="UTF-8">
-            <title>Secured page</title>
+            <title>User reservations</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         </head>
         <body>
+
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -27,8 +28,34 @@
                     </ul>
                 </div>
             </nav>
-            <div class="container">
-                <h1>Secured page</h1>
+
+            <div class="jumbotron text-center">
+                <h3>Your reservations</h3>
+                <div class="container">
+                    <table class="table" align="center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Start</th>
+                                <th class="text-center">End</th>
+                                <th class="text-center">Charge</th>
+                                <th class="text-center">Room ID</th>
+                                <th class="text-center">Room Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="ur:${userReservations}">
+                                <td th:text="${ur.id}">ID</td>
+                                <td th:text="${ur.start}">Start</td>
+                                <td th:text="${ur.end}">End</td>
+                                <td th:text="${ur.charge}">Charge</td>
+                                <td th:text="${ur.roomId}">Room ID</td>
+                                <td th:text="${ur.roomNumber}">Room number</td>
+
+                            </tr>
+                    </table>
+                </div>
+
             </div>
         </body>
     </html>

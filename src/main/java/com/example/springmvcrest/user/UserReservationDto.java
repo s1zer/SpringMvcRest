@@ -1,10 +1,11 @@
-package com.example.springmvcrest.reservation;
+package com.example.springmvcrest.user;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public class ReservationDto {
+public class UserReservationDto {
 
     private Long id;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -12,8 +13,8 @@ public class ReservationDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate end;
     private double charge;
-    private Long userId;
     private Long roomId;
+    private int roomNumber;
 
     public Long getId() {
         return id;
@@ -47,19 +48,19 @@ public class ReservationDto {
         this.charge = charge;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     public Long getRoomId() {
         return roomId;
     }
 
     public void setRoomId(Long roomId) {
         this.roomId = roomId;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
     }
 }

@@ -13,12 +13,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
 
     private UserRepository userRepository;
+
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -27,19 +29,19 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(username);
+        Optional<User> user = userRepository.findByEmail(username);
 
-        if (user != null && user.isActivated()) {
+        if (user.isPresent() && user.get().isActivated()) {
             org.springframework.security.core.userdetails.User userDetails =
                     new org.springframework.security.core.userdetails.User(
-                            user.getEmail(),
-                            user.getPassword(),
-                            convertAuthorities(user.getRoles()));
+                            user.get().getEmail(),
+                            user.get().getPassword(),
+                            convertAuthorities(user.get().getRoles()));
             return userDetails;
         } else {
             throw new UsernameNotFoundException("user not found");
-
         }
+
     }
 
     private Set<GrantedAuthority> convertAuthorities(Set<UserRole> userRoles) {

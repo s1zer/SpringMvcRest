@@ -53,6 +53,7 @@ public class RoomController {
         if (!bindingResult.hasErrors()) {
             if (!roomService.addRoom(room)) {
                 model.addAttribute("message", new Message("Error", "This room already exists"));
+                return "rooms";
             }
             return "redirect:/panel/admin/rooms";
         } else {

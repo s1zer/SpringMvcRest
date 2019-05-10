@@ -60,4 +60,13 @@ public class UserService {
         });
         User savedUser = userRepository.save(userFindById.get());
     }
+
+    public List<UserReservationDto> getUserReservation(String username) {
+        return userRepository.findByEmail(username)
+                .map(User::getReservations)
+                .orElseThrow(UserNotFoundException::new)
+                .stream()
+                .map(UserReservationMapper::toDto)
+                .collect(Collectors.toList());
+    }
 }
