@@ -19,7 +19,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty(message = "{com.example.springmvcrest.model.User.NotEmpty}")
-    private String nickname;
+    private String firstName;
+    @NotEmpty(message = "{com.example.springmvcrest.model.User.NotEmpty}")
+    private String lastName;
     @NotEmpty(message = "{com.example.springmvcrest.model.User.NotEmpty}")
     @Email(message = "{com.example.springmvcrest.model.User.Email}")
     @Column(unique = true)
@@ -66,12 +68,20 @@ public class User {
         this.roles = roles;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public boolean isActivated() {

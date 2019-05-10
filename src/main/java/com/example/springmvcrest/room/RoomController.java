@@ -1,5 +1,6 @@
 package com.example.springmvcrest.room;
 
+import com.example.springmvcrest.message.Message;
 import com.example.springmvcrest.roomCategory.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,10 +48,12 @@ public class RoomController {
     }
 
     @PostMapping("/room/add")
-    public String addNewRoom(@ModelAttribute @Valid RoomDto room, BindingResult bindingResult, Model model) {
+    public String addNewRoom(@Valid @ModelAttribute("room") RoomDto room, BindingResult bindingResult, Model model) {
 
         if (!bindingResult.hasErrors()) {
-            roomService.addRoom(room);
+            if (!roomService.addRoom(room)) {
+                model.addAttribute("message", new Message("Error", "This room already exists"));
+            }
             return "redirect:/panel/admin/rooms";
         } else {
             return "rooms";

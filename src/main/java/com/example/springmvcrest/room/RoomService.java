@@ -42,12 +42,14 @@ public class RoomService {
     }
 
     public boolean addRoom(RoomDto roomDto) {
-        System.out.println("From service: ");
-        System.out.println(roomDto.getRoomCategory());
-        Optional<Category> category = categoryRepository.findByNameIgnoreCase(roomDto.getRoomCategory());
-        Room roomEntity = roomMapper.toEntity(roomDto);
-        roomRepository.save(roomEntity);
-
-        return true;
+        Optional<Room> duplicateRoom = roomRepository.findByNumber(roomDto.getNumber());
+        if (duplicateRoom.isPresent()) {
+            return false;
+        } else {
+            Optional<Category> category = categoryRepository.findByNameIgnoreCase(roomDto.getRoomCategory());
+            Room roomEntity = roomMapper.toEntity(roomDto);
+            roomRepository.save(roomEntity);
+            return true;
+        }
     }
 }

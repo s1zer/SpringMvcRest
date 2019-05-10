@@ -3,7 +3,8 @@ package com.example.springmvcrest.user;
 public class UserDto {
 
     private Long id;
-    private String nickname;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
     private boolean activated;
@@ -16,12 +17,20 @@ public class UserDto {
         this.id = id;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -52,7 +61,8 @@ public class UserDto {
     public String toString() {
         return "UserDto{" +
                 "id=" + id +
-                ", nickname='" + nickname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", activated=" + activated +

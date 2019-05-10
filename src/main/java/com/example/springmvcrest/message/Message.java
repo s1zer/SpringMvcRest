@@ -1,4 +1,4 @@
-package com.example.springmvcrest.user;
+package com.example.springmvcrest.message;
 
 public class Message {
 

@@ -3,7 +3,6 @@ package com.example.springmvcrest.controller.api;
 
 import com.example.springmvcrest.user.UserDto;
 import com.example.springmvcrest.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +34,8 @@ public class RestHomeController {
     public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody UserDto userDto) {
         if (!id.equals(userDto.getId())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID user to update has to be the same in address URL");
-        } else if (userDto.getPassword().isEmpty() && userDto.getNickname().isEmpty() && userDto.getEmail().isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nick name, email and password can not be empty.");
+        } else if (userDto.getPassword().isEmpty() && userDto.getFirstName().isEmpty() && userDto.getLastName().isEmpty() && userDto.getEmail().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "First and last name, email and password can not be empty.");
         }
         userService.setUserStatus(id);
         return ResponseEntity.ok(userDto);

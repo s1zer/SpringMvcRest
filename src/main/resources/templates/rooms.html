@@ -59,22 +59,45 @@
                                 </td>
                             </tr>
                     </table>
-                    <br>
+                </div>
+            </div>
+            <div class="container text-center">
+                <div class="jumbotron">
+
+                    <h3>Add new room</h3>
+                    <p>
+                    <p th:if="${message}" th:text="${message.getContent()}">Result message</p>
+                    </p>
                     <form th:object="${room}" th:action="@{/room/add}" method="post">
-                        <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}">First name errors</p>
-                        <input type="text" placeholder="City" th:field="*{city}">
-                        <input type="number" placeholder="Number" th:field="*{number}">
-                        <select class="form-check-label" th:field="*{roomCategory}">
-                            <option value="Apartment" th:value="'Apartment'">Apartment</option>
-                            <option value="Comfort" th:value="'Comfort'">Comfort</option>
-                            <option value="Standard" th:value="'Standard'">Standard</option>
-                        </select>
-                        <input type="number" placeholder="Price" th:field="*{price}">
-                        <input type="checkbox" th:field="*{available}" placeholder="Available">
+                        <p>
+                        <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City errors</p>
+                        </p>
+                        <p>
+                            <input type="text" placeholder="City" th:field="*{city}">
+                        </p>
+                        <p>
+                            <input type="number" placeholder="Number" th:field="*{number}">
+                        </p>
+                        <p>
+                            <select size="1" style="width: 270px;" th:field="*{roomCategory}">
+                                <option value="Apartment" th:value="'Apartment'">Apartment</option>
+                                <option value="Comfort" th:value="'Comfort'">Comfort</option>
+                                <option value="Standard" th:value="'Standard'">Standard</option>
+                            </select>
+                        </p>
+                        <p>
+                            <input type="number" placeholder="Price" th:field="*{price}">
+                        </p>
+                        <p>
+                            Select if is free
+                            <input type="checkbox" th:field="*{available}" placeholder="Available">
+                        </p>
+                        <p>
+                            <textarea th:field="*{description}" placeholder="Description"></textarea>
+                        </p>
                         <input type="submit" class="btn btn-primary btn-sm" value="Add new room">
                     </form>
                 </div>
             </div>
-
         </body>
     </html>

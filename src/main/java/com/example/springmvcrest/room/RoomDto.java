@@ -9,10 +9,8 @@ public class RoomDto {
     private Long id;
     @NotEmpty(message = "{com.example.springmvcrest.model.Room.NotEmpty}")
     private String city;
-    @NotNull
     @Column(unique = true)
     private int number;
-    @NotNull
     private double price;
     private String description;
     private String roomCategory;

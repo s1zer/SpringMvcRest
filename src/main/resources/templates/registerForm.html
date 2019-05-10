@@ -33,8 +33,10 @@
                 <div class="jumbotron text-center">
                     <h1>Register form</h1>
                     <form th:action="@{/register}" th:object="${user}" method="post">
-                        <p th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">First name errors</p>
-                        <input th:field="*{nickname}" placeholder="Nickname"><br>
+                        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name errors</p>
+                        <input th:field="*{firstName}" placeholder="First name"><br>
+                        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name errors</p>
+                        <input th:field="*{lastName}" placeholder="Last name"><br>
                         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email errors</p>
                         <p th:if="${message}" th:text="${message.getContent()}">Duplicate email error</p>
                         <input th:field="*{email}" placeholder="Email"><br>
