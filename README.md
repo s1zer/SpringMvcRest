@@ -15,7 +15,8 @@
  - Custom register form with validation fields
  - Different pages with access based on admin and user roles.
  - Data.sql file attaches example users:
-       email: admin@game.pl password: pass - with admin role 
-       email: user@game.pl password: pass - with user role(activated)
-       email: user2@game.pl password: pass -with user role(deactivated)
+      - email: admin@game.pl password: adminpass - with admin role 
+      - email: user@game.pl password: pass - with user role(activated)
+      - email: user2@game.pl password: pass -with user role(deactivated)
+
 
