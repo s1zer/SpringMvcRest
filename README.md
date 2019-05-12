@@ -12,7 +12,7 @@
 **Features:**
 
  - Login and register forms
- - Search free rooms
+ - Search free rooms bar
  - Book rooms and make reservation
  - Reservation with check-in and check-out dates
  - Custom register form with validation fields
