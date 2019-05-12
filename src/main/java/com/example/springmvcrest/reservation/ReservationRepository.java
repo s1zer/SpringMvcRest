@@ -1,18 +1,13 @@
 package com.example.springmvcrest.reservation;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ReservationRepository {
+import java.util.Optional;
 
-    static ReservationDto toDto(Reservation reservation) {
-        ReservationDto reservationDto = new ReservationDto();
-        reservationDto.setId(reservation.getId());
-        reservationDto.setCharge(reservation.getCharge());
-        reservationDto.setStart(reservation.getStart());
-        reservationDto.setEnd(reservation.getEnd());
-        reservationDto.setUserId(reservation.getUser().getId());
-        reservationDto.setRoomId(reservation.getRoom().getId());
-        return reservationDto;
-    }
+@Repository
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+
+    Optional<Reservation> findByRoom_Id(Long roomId);
+
 }

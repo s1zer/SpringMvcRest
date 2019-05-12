@@ -27,9 +27,7 @@ public class AdminPanelController {
     @GetMapping("/admin")
     public String adminPanel(Model model) {
         List<UserDto> allUsers = userService.getAlUsers();
-//        Set<String> roomCategories = categoryService.getRoomCategories();
         model.addAttribute("users", allUsers);
-//        model.addAttribute("roomCategories", roomCategories);
         return "adminPanel";
     }
 

@@ -38,28 +38,28 @@
                                 <th class="text-center">Price</th>
                                 <th class="text-center">Category</th>
                                 <th class="text-center">Is available?</th>
-                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:object="${room}">
-                                <!--<td th:text="${r.city}">City</td>-->
-                                <td th:text="${room.city}"></td>
+                                <td th:text="${room.city}">City</td>
                                 <td th:text="${room.number}">Number</td>
                                 <td th:text="${room.price}">Price</td>
                                 <td th:text="${room.roomCategory}">Category</td>
                                 <td th:text="${room.available}">True</td>
-                                <td th:if="${room.available}">
-                                    <button type="button" th:action="@{/room/book}"
-                                            class="btn btn-primary btn-sm btn-block">Book
-                                    </button>
-                                </td>
-                                <td th:if="${!room.available}">
-                                    <button type="button" class="btn btn-primary btn-danger btn-sm btn-block">Reserved
-                                    </button>
-                                </td>
                             </tr>
                     </table>
+
+                    <div class="container">
+                        <form action="#" th:object="${room}" th:action="@{/reservation/create}"
+                              method="post">
+                            <input type="date" th:object="${reservation}" th:field="*{start}">
+                            <input type="date" th:object="${reservation}" th:field="*{end}">
+                            <input type="hidden" th:value="*{id}" th:name="roomId">
+                            <input th:if="${room.available}" type="submit" value="Book"
+                                   class="btn btn-primary btn-sm ">
+                        </form>
+                    </div>
 
                 </div>
             </div>

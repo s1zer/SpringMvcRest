@@ -1,6 +1,7 @@
 package com.example.springmvcrest.room;
 
 import com.example.springmvcrest.message.Message;
+import com.example.springmvcrest.reservation.ReservationDto;
 import com.example.springmvcrest.roomCategory.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,11 +64,11 @@ public class RoomController {
         try {
             RoomDto roomDto = roomService.getRoomById(id);
             model.addAttribute("room", roomDto);
+            model.addAttribute("reservation", new ReservationDto());
             return "roomDetails";
         } catch (RoomNotFoundException e) {
             return "error";
         }
     }
-
 
 }
