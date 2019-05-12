@@ -12,7 +12,9 @@
 **Features:**
 
  - Login and register forms
- - Search free rooms, book free rooms by users
+ - Search free rooms
+ - Book rooms and make reservation
+ - Reservation with check-in and check-out dates
  - Custom register form with validation fields
  - Different pages with access based on admin and user roles.
  - Data.sql file attaches example users:
