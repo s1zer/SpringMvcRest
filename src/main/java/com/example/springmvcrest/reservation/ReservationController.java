@@ -1,9 +1,10 @@
 package com.example.springmvcrest.reservation;
 
-import com.example.springmvcrest.user.UserNotFoundException;
+import com.example.springmvcrest.message.Message;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,11 +18,12 @@ public class ReservationController {
     }
 
     @PostMapping("/reservation/create")
-    public String createReservation(@AuthenticationPrincipal UserDetails currentUser, @RequestParam Long roomId, ReservationDto reservation) {
+    public String createReservation(@AuthenticationPrincipal UserDetails currentUser, @RequestParam Long roomId, ReservationDto reservation, Model model) {
         try {
             reservationService.createReservation(currentUser.getUsername(), roomId, reservation);
             return "redirect:/user/reservations";
-        } catch (UserNotFoundException e) {
+        } catch (InvalidReservationException e) {
+            model.addAttribute("message", new Message("Error", "Invalid data of your reservation. Try again."));
             return "error";
         }
     }

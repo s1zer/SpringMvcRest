@@ -16,7 +16,6 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#" th:href="@{/}">Home</a></li>
-                        <li><a href="#" th:href="@{/secured}">Secured page</a></li>
                         <li><a href="#" th:href="@{/register}">Create account</a></li>
                         <li><a href="#" th:href="@{/panel/admin}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Admin
                             panel</a></li>
@@ -38,9 +37,9 @@
                     <input type="submit" value="Rooms" class="btn btn-secondary btn-lg btn-block">
                 </form>
                 <br>
-                <button type="button" class="btn btn-secondary btn-lg btn-block">Users</button>
-                <button type="button" class="btn btn-secondary btn-lg btn-block">Other</button>
-
+                <button type="button" th:action="@{/panel/admin/users}" class="btn btn-secondary btn-lg btn-block">
+                    Users
+                </button>
             </div>
 
         </body>

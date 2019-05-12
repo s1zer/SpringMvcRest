@@ -1,7 +1,6 @@
 package com.example.springmvcrest.user;
 
 
-import com.example.springmvcrest.room.RoomDto;
 import com.example.springmvcrest.roomCategory.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +23,7 @@ public class AdminPanelController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/admin/users")
     public String adminPanel(Model model) {
         List<UserDto> allUsers = userService.getAlUsers();
         model.addAttribute("users", allUsers);
