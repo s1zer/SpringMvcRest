@@ -5,18 +5,29 @@
 **Projects is based on:**
  - Spring hibernate MVC,
  - Spring Data,
- - Thymeleaf,
  - Spring security,
- - Spring validation
+ - Spring validation,
+ - Thymeleaf,
+ - Boostrap
+
 
 **Features:**
 
- - Login and register forms
- - Search free rooms bar
- - Book rooms and make reservation
- - Reservation with check-in and check-out dates
- - Custom register form with validation fields
- - Different pages with access based on admin and user roles.
+ - Login and register forms with security and validation,
+ - User roles based on Spring Security (admin role and user role),
+ - User role priviliges:
+      - Searching free rooms by city name,
+      - Checking rooms' details,
+      - Booking avaliable rooms by check-in and check-out dates,
+      - Checking reservations
+ - Admin role extra priliges:
+      - setting all users accounts' statuses (activate/deactivated),
+      - checking and adding new rooms      
+ - REST api added:
+      - http://localhost:8080/api
+      - http://localhost:8080/api/room/{id}
+      - http://localhost:8080/api/panel/admin/users
+      - http://localhost:8080/api/panel/admin/user/{id}/reservations
  - Data.sql file attaches example users:
       - email: admin@game.pl password: adminpass - with admin role 
       - email: user@game.pl password: pass - with user role(activated)
