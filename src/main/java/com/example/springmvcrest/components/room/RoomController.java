@@ -67,6 +67,7 @@ public class RoomController {
             model.addAttribute("reservation", new ReservationDto());
             return "roomDetails";
         } catch (RoomNotFoundException e) {
+            model.addAttribute("message", new Message("Error", "Room has not been found."));
             return "error";
         }
     }

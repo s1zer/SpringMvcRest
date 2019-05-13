@@ -29,9 +29,9 @@
       - http://localhost:8080/api/panel/admin/users
       - http://localhost:8080/api/panel/admin/user/{id}/reservations
  - Data.sql file attaches example users:
-      - email: admin@game.pl password: adminpass - with admin role 
-      - email: user@game.pl password: pass - with user role(activated)
-      - email: user2@game.pl password: pass -with user role(deactivated)
+      - email: admin@mail.pl password: adminpass - with admin role 
+      - email: user@mail.pl password: pass - with user role(activated)
+      - email: user2@mail.pl password: pass -with user role(deactivated)
       
  **Database model:**
 

@@ -63,7 +63,7 @@ public class RoomService {
         if (findRoom.isPresent()) {
             return findRoom.map(r -> RoomMapper.toDto(r)).get();
         } else {
-            return new RoomDto();
+            throw new RoomNotFoundException();
         }
     }
 }
