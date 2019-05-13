@@ -1,7 +1,7 @@
 package com.example.springmvcrest.controller;
 
-import com.example.springmvcrest.room.RoomDto;
-import com.example.springmvcrest.room.RoomService;
+import com.example.springmvcrest.components.room.RoomDto;
+import com.example.springmvcrest.components.room.RoomService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

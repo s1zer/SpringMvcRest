@@ -31,25 +31,27 @@
                     <table class="table" align="center">
                         <thead class="thead-dark">
                             <tr>
-                                <th class="text-center">City</th>
-                                <th class="text-center">Number</th>
-                                <th class="text-center">Price</th>
-                                <th class="text-center">Category</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">First name</th>
+                                <th class="text-center">Last name</th>
+                                <th class="text-center">Emai</th>
                                 <th class="text-center">Is available?</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="u:${users}">
-                                <td th:text="${r.city}">City</td>
-                                <td th:text="${r.number}">Number</td>
-                                <td th:text="${r.price}">Price</td>
-                                <td th:text="${r.roomCategory}">Category</td>
-                                <td th:text="${r.available}">True</td>
+                                <td th:text="${u.id}">Id user</td>
+                                <td th:text="${u.firstName}">First name</td>
+                                <td th:text="${u.lastName}">Last name</td>
+                                <td th:text="${u.email}">Email</td>
+                                <td th:text="${u.activated}">True</td>
                                 <td>
-                                    <form action="#" th:action="@{/room/delete}" method="post" th:object="${r}">
-                                        <input type="hidden" th:value="*{id}" th:name="idRoomToDelete">
-                                        <input type="submit" class="btn btn-primary btn-sm btn-danger" value="Delete">
+                                    <form action="#" th:action="@{/panel/admin/updateUserStatus}" method="post"
+                                          th:object="${u}">
+                                        <input type="hidden" th:value="*{id}" th:name="idUserToUpdate">
+                                        <input type="submit" class="btn btn-primary btn-sm btn-danger"
+                                               value="Change status">
                                     </form>
                                 </td>
                             </tr>

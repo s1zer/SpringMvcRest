@@ -1,9 +1,9 @@
 package com.example.springmvcrest.security;
 
 
-import com.example.springmvcrest.user.User;
-import com.example.springmvcrest.user.UserRepository;
-import com.example.springmvcrest.userRole.UserRole;
+import com.example.springmvcrest.components.user.User;
+import com.example.springmvcrest.components.user.UserRepository;
+import com.example.springmvcrest.components.userRole.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
