@@ -32,6 +32,8 @@
       - email: admin@game.pl password: adminpass - with admin role 
       - email: user@game.pl password: pass - with user role(activated)
       - email: user2@game.pl password: pass -with user role(deactivated)
+      
+ **Database model:**
 
 ![Alt text](/src/main/resources/static/images/database.PNG?raw=true "Database")
 
