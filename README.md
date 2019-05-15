@@ -1,8 +1,8 @@
 # SpringMVCProject
 
-**To run application there is needed enter database settings in "application.properties"** 
+**Running an application requires enter database settings in "application.settings"."** 
 
-**Projects is based on:**
+**Project is based on:**
  - Spring hibernate MVC,
  - Spring Data,
  - Spring security,
@@ -15,12 +15,12 @@
 
  - Login and register forms with security and validation,
  - User roles based on Spring Security (admin role and user role),
- - User role priviliges:
+ - User role privileges:
       - Searching free rooms by city name,
       - Checking rooms' details,
-      - Booking avaliable rooms by check-in and check-out dates,
+      - Booking available rooms by check-in and check-out dates,
       - Checking reservations
- - Admin role extra priviliges:
+ - Admin role extra privilegess:
       - setting all users accounts' statuses (activate/deactivated),
       - checking and adding new rooms      
  - REST api added:
