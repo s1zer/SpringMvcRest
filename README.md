@@ -1,6 +1,6 @@
 # SpringMVCProject
 
-**Running an application requires enter database settings in "application.settings"."** 
+**Running an application requires enter database settings in "application.settings".** 
 
 **Project is based on:**
  - Spring hibernate MVC,
