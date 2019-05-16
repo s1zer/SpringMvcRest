@@ -20,7 +20,7 @@
       - Checking rooms' details,
       - Booking available rooms by check-in and check-out dates,
       - Checking reservations
- - Admin role extra privilegess:
+ - Admin role extra privileges:
       - setting all users accounts' statuses (activate/deactivated),
       - checking and adding new rooms      
  - REST api added:
