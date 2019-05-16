@@ -8,7 +8,7 @@
  - Spring security,
  - Spring validation,
  - Thymeleaf,
- - Boostrap
+ - Bootstrap
 
 
 **Features:**
