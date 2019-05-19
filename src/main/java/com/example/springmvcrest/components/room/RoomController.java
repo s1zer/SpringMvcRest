@@ -9,8 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Set;
 
 @Controller
 public class RoomController {
@@ -21,42 +19,6 @@ public class RoomController {
     public RoomController(RoomService roomService, CategoryService categoryService) {
         this.roomService = roomService;
         this.categoryService = categoryService;
-    }
-
-    @GetMapping("/panel/admin/rooms")
-    public String getRoom(@RequestParam(required = false) String city, Model model) {
-        if (city != null && city.length() > 0) {
-            List<RoomDto> rooms = roomService.getAllRoomsByCity(city);
-            model.addAttribute("rooms", rooms);
-        } else {
-            List<RoomDto> rooms;
-            rooms = roomService.getAllRooms();
-            model.addAttribute("rooms", rooms);
-        }
-        model.addAttribute("room", new RoomDto());
-        Set<String> roomCategories = categoryService.getRoomCategories();
-        model.addAttribute("roomCategories", roomCategories);
-        return "rooms";
-    }
-
-    @PostMapping("/room/delete")
-    public String deleteRoom(@RequestParam Long idRoomToDelete) {
-        roomService.deleteRoom(idRoomToDelete);
-        return "redirect:/panel/admin/rooms";
-    }
-
-    @PostMapping("/room/add")
-    public String addNewRoom(@Valid @ModelAttribute("room") RoomDto room, BindingResult bindingResult, Model model) {
-
-        if (!bindingResult.hasErrors()) {
-            if (!roomService.addRoom(room)) {
-                model.addAttribute("message", new Message("Error", "This room already exists"));
-                return "rooms";
-            }
-            return "redirect:/panel/admin/rooms";
-        } else {
-            return "rooms";
-        }
     }
 
     @GetMapping("room/{id}")
@@ -70,6 +32,36 @@ public class RoomController {
             model.addAttribute("message", new Message("Error", "Room has not been found."));
             return "error";
         }
+    }
+
+    @GetMapping("panel/admin/rooms")
+    public String getRoom(@RequestParam(required = false) String city, Model model) {
+        if (city != null && city.length() > 0) {
+            model.addAttribute("rooms", roomService.getAllRoomsByCity(city));
+        } else {
+            model.addAttribute("rooms", roomService.getAllRooms());
+        }
+        model.addAttribute("room", new RoomDto());
+        model.addAttribute("roomCategories", categoryService.getRoomCategories());
+        return "rooms";
+    }
+
+    @PostMapping("/room/add")
+    public String addNewRoom(@Valid @ModelAttribute("room") RoomDto room, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "rooms";
+        } else if (roomService.addRoom(room)) {
+            return "redirect:/panel/admin/rooms";
+        } else {
+            model.addAttribute("message", new Message("Error", "This rooms already exists"));
+            return "rooms";
+        }
+    }
+
+    @PostMapping("/room/delete")
+    public String deleteRoom(@RequestParam Long idRoomToDelete) {
+        roomService.deleteRoom(idRoomToDelete);
+        return "redirect:/panel/admin/rooms";
     }
 
 }

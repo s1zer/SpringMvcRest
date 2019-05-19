@@ -25,7 +25,7 @@ public class ReservationService {
         this.reservationMapper = reservationMapper;
     }
 
-    void createReservation(String currentUserLogin, Long roomId, ReservationDto reservationDto) {
+    public void createReservation(String currentUserLogin, Long roomId, ReservationDto reservationDto) {
         Optional<Room> findRoom = roomRepository.findById(roomId);
         Optional<User> findUser = userRepository.findByEmail(currentUserLogin);
 

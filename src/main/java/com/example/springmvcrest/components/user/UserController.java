@@ -22,26 +22,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("user", new User());
-        return "registerForm";
-    }
-
-    @PostMapping("/register")
-    public String addUser(@ModelAttribute(name = "user") @Valid User user, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            return "registerForm";
-        } else {
-            if (userService.addWithDefaultRole(user)) {
-                return "registerSuccess";
-            } else {
-                model.addAttribute("message", new Message("Error", "This email already exists"));
-                return "registerForm";
-            }
-        }
-    }
-
     @GetMapping("/user")
     public String userPanel() {
         return "userPanel";
@@ -56,6 +36,24 @@ public class UserController {
         } catch (UserNotFoundException e) {
             model.addAttribute("message", new Message("Error", "User not found"));
             return "error";
+        }
+    }
+
+    @GetMapping("/register")
+    public String register(Model model) {
+        model.addAttribute("user", new User());
+        return "registerForm";
+    }
+
+    @PostMapping("/register")
+    public String addUser(@ModelAttribute(name = "user") @Valid User user, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "registerForm";
+        } else if (userService.addWithDefaultRole(user)) {
+            return "registerSuccess";
+        } else {
+            model.addAttribute("message", new Message("Error", "This email already exists"));
+            return "registerForm";
         }
     }
 

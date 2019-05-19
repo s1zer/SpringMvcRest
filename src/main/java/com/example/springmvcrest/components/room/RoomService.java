@@ -36,13 +36,12 @@ public class RoomService {
                 .collect(Collectors.toList());
     }
 
-    public boolean deleteRoom(Long id) {
-        Optional<Room> room = roomRepository.findById(id);
-        if (room.isPresent() && room.get().isAvailable()) {
-            roomRepository.delete(room.get());
-            return true;
+    public RoomDto getRoomById(Long id) {
+        Optional<Room> findRoom = roomRepository.findById(id);
+        if (findRoom.isPresent()) {
+            return findRoom.map(r -> RoomMapper.toDto(r)).get();
         } else {
-            return false;
+            throw new RoomNotFoundException();
         }
     }
 
@@ -58,12 +57,14 @@ public class RoomService {
         }
     }
 
-    public RoomDto getRoomById(Long id) {
-        Optional<Room> findRoom = roomRepository.findById(id);
-        if (findRoom.isPresent()) {
-            return findRoom.map(r -> RoomMapper.toDto(r)).get();
+    public boolean deleteRoom(Long id) {
+        Optional<Room> room = roomRepository.findById(id);
+        if (room.isPresent() && room.get().isAvailable()) {
+            roomRepository.delete(room.get());
+            return true;
         } else {
-            throw new RoomNotFoundException();
+            return false;
         }
     }
+
 }
